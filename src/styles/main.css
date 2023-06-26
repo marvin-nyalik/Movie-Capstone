@@ -13,6 +13,10 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+main {
+  margin-bottom: 2rem;
+}
+
 h1 {
   text-transform: capitalize;
   font-size: 2rem;
@@ -105,4 +109,18 @@ ul {
 
 .movie-card .interactions .like:hover {
   background: #ffcdd2;
+}
+
+footer {
+  height: 17vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgb(223, 216, 216);
+}
+
+footer p {
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: 300;
 }
