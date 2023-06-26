@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,500;1,400&display=swap');
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+  text-transform: capitalize;
+  font-size: 2rem;
+}
+
+header {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  text-transform: capitalize;
+  margin-top: 1rem;
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  gap: 30px;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.movie-card {
+  background: #fff;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  padding: 1rem 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-card img {
+  width: 80%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.movie-card h3 {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  text-transform: capitalize;
+}
+
+.movie-card .interactions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 0.5rem;
+}
+
+.movie-card .interactions button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.movie-card .interactions button:hover {
+  transform: scale(1.05);
+}
+
+.movie-card .interactions button:focus {
+  outline: none;
+}
+
+.movie-card .interactions .like {
+  color: #f44336;
+  background: #ffebee;
+  padding: 0.7rem;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+.movie-card .interactions .like:hover {
+  background: #ffcdd2;
+}
