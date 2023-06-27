@@ -1,20 +1,22 @@
-import { getShowDetails } from "./api.js";
+import { getShowDetails } from './api.js';
+
 const showModal = async (e) => {
-    if (e.target.classList.contains('comments')) {
-        const btn = e.target;
-        const movieCard = btn.closest('.movie-card');
-        const id = movieCard.getAttribute('data-id');
-        const modal = movieCard.querySelector('.my-modal');
-        modal.style.display = 'block';
+  if (e.target.classList.contains('comments')) {
+    const btn = e.target;
+    const movieCard = btn.closest('.movie-card');
+    const id = movieCard.getAttribute('data-id');
+    const modal = movieCard.querySelector('.my-modal');
+    modal.style.display = 'block';
 
-        document.querySelector('body').style.overflow = 'hidden';
+    document.querySelector('body').style.overflow = 'hidden';
 
-        const details = await getShowDetails(id);
-        const { name, type, language, summary,
-           averageRuntime, image } = details;
-           console.log(image.original);
+    const details = await getShowDetails(id);
+    const {
+      name, type, language, summary,
+      averageRuntime, image,
+    } = details;
 
-        modal.innerHTML = `
+    modal.innerHTML = `
         <div class="headline">
                   <h3>IMovies</h3>
                   <h3 class="close">&times;</h3>
@@ -55,18 +57,16 @@ const showModal = async (e) => {
                   </div>
                 </div>
         `;
+  }
 
-      }
+  if (e.target.classList.contains('close')) {
+    const closingBtn = e.target;
+    const modal = closingBtn.closest('.my-modal');
+    modal.style.display = 'none';
+    document.querySelector('body').style.overflow = 'scroll';
 
-      if (e.target.classList.contains('close')) {
-        console.log('closing modal');
-        const closingBtn = e.target;
-        const modal = closingBtn.closest('.my-modal');
-        modal.style.display = 'none';
-        document.querySelector('body').style.overflow = 'scroll';
+    e.stopPropagation();
+  }
+};
 
-        e.stopPropagation();
-      }    
-}
-
-export default showModal
+export default showModal;

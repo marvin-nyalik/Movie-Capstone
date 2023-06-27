@@ -144,9 +144,9 @@ footer p {
 }
 
 .close {
-z-index: 99;
-pointer-events: all;
-cursor: pointer;
+  z-index: 99;
+  pointer-events: all;
+  cursor: pointer;
 }
 
 .movie-card:not(.modal-open) {
@@ -275,10 +275,10 @@ p span {
 
 .my-modal .footer .disp {
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   .my-modal {
     width: 80%;
     overflow-y: auto;
@@ -292,6 +292,7 @@ p span {
 
   .my-modal .img-cover {
     height: auto;
+    margin-right: 20px;
   }
 
   .my-modal .headline {
@@ -323,17 +324,15 @@ p span {
     margin: 0 auto;
   }
 
-  .my-modal .img-cover {
-    margin-right: 20px;
-  }
-
   .my-modal .add-comment {
     height: auto;
   }
+
   form input {
     width: 30%;
     border: 2px solid grey;
   }
+
   form textarea {
     height: 25vh;
     border-radius: 1rem;
