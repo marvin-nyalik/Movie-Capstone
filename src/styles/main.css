@@ -57,9 +57,9 @@ ul {
   transition: all 0.3s ease-in-out;
 }
 
-.movie-card:hover {
+/* .movie-card:hover {
   transform: scale(1.05);
-}
+} */
 
 .movie-card img {
   width: 80%;
@@ -123,4 +123,225 @@ footer p {
   margin: 0 auto;
   font-size: 18px;
   font-weight: 500;
+}
+
+/* modal */
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  width: 70%;
+  height: 90%;
+  margin: auto;
+  background: rgb(79, 76, 76);
+  z-index: 10;
+  transition: opacity 0.3s, visibility 0.3s;
+  pointer-events: auto;
+}
+
+.close {
+z-index: 99;
+pointer-events: all;
+cursor: pointer;
+}
+
+.movie-card:not(.modal-open) {
+  pointer-events: auto;
+}
+
+.my-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 90%;
+  height: 95%;
+  overflow-y: scroll;
+  padding: 20px 0;
+  margin: 0 auto;
+  border: 1px solid lightgray;
+  border-radius: 3rem;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-modal .modal-cover {
+  width: 95%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.my-modal .headline {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.my-modal .headline p {
+  font-size: 24px;
+}
+
+.my-modal .body {
+  width: 90%;
+  height: auto;
+  margin: 20px auto;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 0.9rem;
+}
+
+.my-modal .img-cover {
+  width: 90%;
+  height: 55%;
+  margin: auto;
+  object-fit: cover;
+}
+
+.my-modal .img-cover img {
+  width: 98%;
+}
+
+.my-modal .comments {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.my-modal .add-comment {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.my-modal .add-comment form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  width: 95%;
+  margin: 20px 0;
+  height: 2rem;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+form input::placeholder {
+  font-style: italic;
+  color: grey;
+}
+
+form textarea {
+  height: 4rem;
+  width: 95%;
+  margin: 20px 0;
+  padding: 0;
+  border-radius: 20px;
+  border: 1px solid grey;
+}
+
+#add-comment-button {
+  height: 5vh;
+  width: 30%;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.modal-container {
+  background: #c5c9d0;
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+p span {
+  font-weight: 300;
+}
+
+.my-modal .footer {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.my-modal .footer .disp {
+  display: flex;
+  justify-content: space-between;  
+}
+
+@media screen and (min-width:768px) {
+  .my-modal {
+    width: 80%;
+    overflow-y: auto;
+    height: 98%;
+    padding: 1rem 0;
+  }
+
+  .my-modal .modal-cover {
+    height: 90%;
+  }
+
+  .my-modal .img-cover {
+    height: auto;
+  }
+
+  .my-modal .headline {
+    height: 3vh;
+    position: relative;
+    top: -2rem;
+    margin-bottom: 20px;
+  }
+
+  .my-modal .headline p {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .my-modal .img-cover img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .my-modal .body {
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .my-modal .desk-cont {
+    display: flex;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .my-modal .img-cover {
+    margin-right: 20px;
+  }
+
+  .my-modal .add-comment {
+    height: auto;
+  }
+  form input {
+    width: 30%;
+    border: 2px solid grey;
+  }
+  form textarea {
+    height: 25vh;
+    border-radius: 1rem;
+    padding: 20px;
+    border: 2px solid grey;
+  }
+
+  form button {
+    width: 3rem;
+  }
 }
