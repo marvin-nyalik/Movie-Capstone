@@ -1,7 +1,8 @@
 const involvementAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
-const appId = 'YtlVdwaqHwlRoGH1YCI2';
-const baseAddCommentUrl = `${involvementAPI + appId}/comments/`;
-const getCommentsBaseUrl = `${involvementAPI + appId}/comments?item_id=`;
+const apiKey = 'r2HqEF2mwpkxdwytyGER';
+const baseAddCommentUrl = `${involvementAPI + apiKey}/comments/`;
+const getCommentsBaseUrl = `${involvementAPI + apiKey}/comments?item_id=`;
+
 
 const getShows = () => fetch('https://api.tvmaze.com/shows').then((res) => res.json());
 
@@ -103,6 +104,24 @@ const getSingleMovieComments = async (movieId, commentsCont, count) => {
   });
 };
 
+const postLike = async (id, url) => {
+  const response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify({
+      item_id: id,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  return response;
+};
+
+const getLikes = async (url) => {
+  const response = await fetch(url);
+  return response;
+};
+
 export {
-  getShows, getShowDetails, addMovieComment, getSingleMovieComments,
+  getShows, postLike, getLikes, apiKey, getShowDetails, addMovieComment, getSingleMovieComments,
 };

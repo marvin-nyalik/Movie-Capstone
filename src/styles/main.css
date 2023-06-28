@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,500;1,400&display=swap');
+@import 'toggle.css';
 
 *,
 ::after,
@@ -28,15 +29,49 @@ header {
   justify-content: space-between;
   padding: 1rem 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
-ul {
+.desktop-menu {
+  display: none;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #272a31;
+  opacity: 0.9;
+  backdrop-filter: blur(7px);
+  transition: all 1s ease;
+  display: none;
+}
+
+.active.mobile-menu {
+  display: block;
+}
+
+.mobile-menu ul {
   list-style: none;
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   text-transform: capitalize;
-  margin-top: 1rem;
+}
+
+.mobile-menu ul li {
+  margin: 1rem 0;
+  color: #fff;
+}
+
+.mobile-menu ul li:hover {
+  color: #fff;
 }
 
 .movie-list {
@@ -170,6 +205,7 @@ footer p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .my-modal .modal-cover {
@@ -324,8 +360,6 @@ p span {
     margin: 0 auto;
   }
 
-
-
   .my-modal .add-comment {
     height: auto;
   }
@@ -345,4 +379,44 @@ p span {
   form button {
     width: 3rem;
   }
+
+  @media only screen and (min-width: 768px) {
+    .mobile-menu {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .desktop-menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      text-transform: capitalize;
+      margin-top: 1rem;
+    }
+
+    ul li {
+      text-decoration: none;
+      color: #000;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    ul li:hover,
+    ul li:focus {
+      background: #f5f5f5;
+    }
+  }
+
 }

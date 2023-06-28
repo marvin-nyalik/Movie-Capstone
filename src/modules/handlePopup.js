@@ -1,5 +1,6 @@
 import { getShowDetails, addMovieComment, getSingleMovieComments } from './api.js';
 
+
 const showModal = async (e) => {
   if (e.target.classList.contains('comments')) {
     const btn = e.target;
@@ -58,6 +59,7 @@ const showModal = async (e) => {
                   </div>
                 </div>
         `;
+  }
 
     modal.addEventListener('click', (e) => addMovieComment(e));
     const modalImage = modal.querySelector('.img-cover img');
@@ -74,7 +76,7 @@ const showModal = async (e) => {
     const modal = closingBtn.closest('.my-modal');
     modal.style.display = 'none';
     document.querySelector('body').style.overflow = 'scroll';
-    e.stopPropagation();
+
   }
 };
 
