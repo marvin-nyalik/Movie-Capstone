@@ -3,15 +3,14 @@ import showModal from './handlePopup.js';
 import handleLikeButtonClick from './likes.js';
 import displayLikes from './getlikes.js';
 
-
 const movieContainer = document.querySelector('.movie-list');
 
 // displayshows function
 const displayShows = () => {
   getShows().then((data) => {
     data.splice(50);
-    const shows = data.map((show) => `
-      <div class="movie-card">
+    const shows = data.map((show, index) => `
+      <div class="movie-card" data-id="${data[index].externals.thetvdb}">
         <img src="${show.image.medium}" alt="${show.name}">
         <h3 class="movie-title">${show.name}</h3>
         <div class="interactions">

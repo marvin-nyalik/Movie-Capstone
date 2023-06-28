@@ -205,6 +205,7 @@ footer p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .my-modal .modal-cover {
@@ -378,41 +379,43 @@ p span {
   form button {
     width: 3rem;
   }
-@media only screen and (min-width: 768px) {
-  .mobile-menu {
-    display: none;
-  }
 
-  .menu-toggle {
-    display: none;
-  }
+  @media only screen and (min-width: 768px) {
+    .mobile-menu {
+      display: none;
+    }
 
-  .desktop-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+    .menu-toggle {
+      display: none;
+    }
 
-  ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    text-transform: capitalize;
-    margin-top: 1rem;
-  }
+    .desktop-menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-  ul li {
-    text-decoration: none;
-    color: #000;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      text-transform: capitalize;
+      margin-top: 1rem;
+    }
 
-  ul li:hover,
-  ul li:focus {
-    background: #f5f5f5;
+    ul li {
+      text-decoration: none;
+      color: #000;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    ul li:hover,
+    ul li:focus {
+      background: #f5f5f5;
+    }
   }
 }
