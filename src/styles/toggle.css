@@ -4,7 +4,7 @@
   margin-top: 16px;
   padding: 0 23px;
   cursor: pointer;
-  z-index: 5;
+  z-index: 999;
 }
 
 .menu-toggle::before {
@@ -19,7 +19,7 @@
 
 .active.menu-toggle::before {
   transform: translateY(2px) rotate(45deg);
-  background: #333;
+  background: #fff;
 }
 
 .menu-toggle::after {
@@ -36,5 +36,5 @@
 .active.menu-toggle::after {
   transform: translateY(0) rotate(-45deg);
   box-shadow: 0 0 0 #333;
-  background: #333;
+  background: #fff;
 }

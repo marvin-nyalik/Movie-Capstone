@@ -7,6 +7,7 @@ const movieContainer = document.querySelector('.movie-list');
 // displayshows function
 const displayShows = () => {
   getShows().then((data) => {
+    data.splice(50);
     const shows = data.map((show) => `
       <div class="movie-card">
         <img src="${show.image.medium}" alt="${show.name}">
@@ -14,8 +15,8 @@ const displayShows = () => {
         <div class="interactions">
           <button class="comments">comment</button>
           <div>
-            <i class="like fa-regular fa-heart" data-show-id="${show.id}"></i>
-            <span class="likes"></span>
+            <i class="like fa-regular fa-heart" data-show-id="${show.name}"></i>
+            <span class="likes" data-shows-id="${show.name}"></span>
           </div>
         </div>
       </div>

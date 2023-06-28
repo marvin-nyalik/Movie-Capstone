@@ -1,5 +1,7 @@
 const getShows = () => fetch('https://api.tvmaze.com/shows').then((res) => res.json());
 
+const apiKey = 'r2HqEF2mwpkxdwytyGER';
+
 const postLike = async (id, url) => {
   const response = await fetch(url, {
     method: 'POST',
@@ -18,4 +20,6 @@ const getLikes = async (url) => {
   return response;
 };
 
-export { getShows, postLike, getLikes };
+export {
+  getShows, postLike, getLikes, apiKey,
+};
