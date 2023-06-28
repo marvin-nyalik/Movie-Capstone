@@ -23,7 +23,7 @@ const addMovieComment = async (e) => {
       .querySelector('.user-comments');
     const commentCount = form.closest('.modal-cover')
       .querySelector('.comments').querySelector('#comment-count');
-    
+
     const config = {
       method: 'POST',
       body: JSON.stringify(
@@ -37,8 +37,6 @@ const addMovieComment = async (e) => {
         'Content-Type': 'application/json',
       },
     };
-
-    console.log(config);
 
     if (name !== '' && comment !== '' && movieId !== '') {
       await fetch(baseAddCommentUrl, config);
@@ -66,7 +64,7 @@ const addMovieComment = async (e) => {
 };
 
 const getSingleMovieComments = async (movieId, commentsCont, count) => {
-  const commentsUrl = getCommentsBaseUrl + `${movieId}`;
+  const commentsUrl = `${getCommentsBaseUrl}${movieId}`;
   const counter = count;
 
   try {
@@ -125,5 +123,5 @@ const getLikes = async (url) => {
 
 export {
   getShows, postLike, getLikes, apiKey, getShowDetails,
-  addMovieComment, getSingleMovieComments
+  addMovieComment, getSingleMovieComments,
 };

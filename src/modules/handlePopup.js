@@ -58,10 +58,10 @@ const showModal = async (e) => {
                   </div>
                 </div>
         `;
-        modal.addEventListener('click', (e) => addMovieComment(e));
-        const modalImage = modal.querySelector('.img-cover img');
+    modal.addEventListener('click', (e) => addMovieComment(e));
+    const modalImage = modal.querySelector('.img-cover img');
 
-      modalImage.addEventListener('load', async () => {
+    modalImage.addEventListener('load', async () => {
       const commentsContainer = modal.querySelector('.user-comments');
       const commentCount = modal.querySelector('#comment-count');
       await getSingleMovieComments(id, commentsContainer, commentCount);
