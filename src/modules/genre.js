@@ -1,4 +1,4 @@
-import getShows from './api.js';
+import { getShows } from './api.js';
 import displayShows from './display.js';
 // eslint-disable-next-line
 import { mobileMenu, menuToggle } from '../index.js';
@@ -22,13 +22,16 @@ const displayAction = () => {
   getShows().then((data) => {
     const shows = data.filter((show) => show.genres.includes('Action')).map((show) => `
                   <div class="movie-card">
-                      <img src="${show.image.medium}" alt="${show.name}">
-                      <h3 class="movie-title">${show.name}</h3>
-                      <div class="interactions">
-                          <button class="comments">comment</button>
-                          <i class="like fa-regular fa-heart"></i>
-                      </div>
-                  </div>
+        <img src="${show.image.medium}" alt="${show.name}">
+        <h3 class="movie-title">${show.name}</h3>
+        <div class="interactions">
+          <button class="comments">comment</button>
+          <div>
+            <i class="like fa-regular fa-heart" data-show-id="${show.id}"></i>
+            <span class="likes"></span>
+          </div>
+        </div>
+      </div>
                   `).join('');
     movieList.innerHTML = shows;
   });
@@ -39,13 +42,16 @@ const displayDrama = () => {
   getShows().then((data) => {
     const shows = data.filter((show) => show.genres.includes('Drama')).map((show) => `
                   <div class="movie-card">
-                      <img src="${show.image.medium}" alt="${show.name}">
-                      <h3 class="movie-title">${show.name}</h3>
-                      <div class="interactions">
-                          <button class="comments">comment</button>
-                          <i class="like fa-regular fa-heart"></i>
-                      </div>
-                  </div>
+        <img src="${show.image.medium}" alt="${show.name}">
+        <h3 class="movie-title">${show.name}</h3>
+        <div class="interactions">
+          <button class="comments">comment</button>
+          <div>
+            <i class="like fa-regular fa-heart" data-show-id="${show.id}"></i>
+            <span class="likes"></span>
+          </div>
+        </div>
+      </div>
                   `).join('');
     movieList.innerHTML = shows;
   });
@@ -56,13 +62,16 @@ const displayComedy = () => {
   getShows().then((data) => {
     const shows = data.filter((show) => show.genres.includes('Comedy')).map((show) => `
                   <div class="movie-card">
-                      <img src="${show.image.medium}" alt="${show.name}">
-                      <h3 class="movie-title">${show.name}</h3>
-                      <div class="interactions">
-                          <button class="comments">comment</button>
-                          <i class="like fa-regular fa-heart"></i>
-                      </div>
-                  </div>
+        <img src="${show.image.medium}" alt="${show.name}">
+        <h3 class="movie-title">${show.name}</h3>
+        <div class="interactions">
+          <button class="comments">comment</button>
+          <div>
+            <i class="like fa-regular fa-heart" data-show-id="${show.id}"></i>
+            <span class="likes"></span>
+          </div>
+        </div>
+      </div>
                   `).join('');
     movieList.innerHTML = shows;
   });
