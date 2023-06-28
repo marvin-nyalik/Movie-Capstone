@@ -1,20 +1,22 @@
-import { getShowDetails } from "./api.js";
+import { getShowDetails, addMovieComment, getSingleMovieComments } from './api.js';
+
 const showModal = async (e) => {
-    if (e.target.classList.contains('comments')) {
-        const btn = e.target;
-        const movieCard = btn.closest('.movie-card');
-        const id = movieCard.getAttribute('data-id');
-        const modal = movieCard.querySelector('.my-modal');
-        modal.style.display = 'block';
+  if (e.target.classList.contains('comments')) {
+    const btn = e.target;
+    const movieCard = btn.closest('.movie-card');
+    const id = movieCard.getAttribute('data-id');
+    const modal = movieCard.querySelector('.my-modal');
+    modal.style.display = 'block';
 
-        document.querySelector('body').style.overflow = 'hidden';
+    document.querySelector('body').style.overflow = 'hidden';
 
-        const details = await getShowDetails(id);
-        const { name, type, language, summary,
-           averageRuntime, image } = details;
-           console.log(image.original);
+    const details = await getShowDetails(id);
+    const {
+      name, type, language, summary,
+      averageRuntime, image,
+    } = details;
 
-        modal.innerHTML = `
+    modal.innerHTML = `
         <div class="headline">
                   <h3>IMovies</h3>
                   <h3 class="close">&times;</h3>
@@ -40,33 +42,40 @@ const showModal = async (e) => {
                     </div>
                   </div>
                   <div class="comments">
-                      <h4>COMMENTS <span id="comment-count">24</span> </h4>
+                      <h4>COMMENTS <span id="comment-count">0</span> </h4>
+                      <div class="user-comments">
                       <p>No comment</p>
-
+                      </div>
                   </div>
                   <div class="add-comment">
                       <h4>Add A Comment</h4>
                       <form action="#">
-                          <input type="text" name="name" id="name" placeholder="Your name">
-                          <textarea type="text" name="comment" id="add-comment" rows = "30">
-                          </textarea>
-                          <button type="button" id="add-comment-button">Comment</button>
+                          <input type="text" name="name" id="name" placeholder="Your name" required>
+                          <textarea type="text" name="comment" id="add-comment" rows = "30" required></textarea>
+                          <button type="button" class="add-comment-button" 
+                          id="add-comment-button" data-id="${name}">Comment</button>
                       </form>
                   </div>
                 </div>
         `;
 
-      }
+    modal.addEventListener('click', (e) => addMovieComment(e));
+    const modalImage = modal.querySelector('.img-cover img');
 
-      if (e.target.classList.contains('close')) {
-        console.log('closing modal');
-        const closingBtn = e.target;
-        const modal = closingBtn.closest('.my-modal');
-        modal.style.display = 'none';
-        document.querySelector('body').style.overflow = 'scroll';
+    modalImage.addEventListener('load', async () => {
+      const commentsContainer = modal.querySelector('.user-comments');
+      const commentCount = modal.querySelector('#comment-count');
+      await getSingleMovieComments(name, commentsContainer, commentCount);
+    });
+  }
 
-        e.stopPropagation();
-      }    
-}
+  if (e.target.classList.contains('close')) {
+    const closingBtn = e.target;
+    const modal = closingBtn.closest('.my-modal');
+    modal.style.display = 'none';
+    document.querySelector('body').style.overflow = 'scroll';
+    e.stopPropagation();
+  }
+};
 
-export default showModal
+export default showModal;
