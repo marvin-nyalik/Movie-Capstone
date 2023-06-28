@@ -1,6 +1,8 @@
 import { getShows } from './api.js';
+import showModal from './handlePopup.js';
 import handleLikeButtonClick from './likes.js';
 import displayLikes from './getlikes.js';
+
 
 const movieContainer = document.querySelector('.movie-list');
 
@@ -19,10 +21,14 @@ const displayShows = () => {
             <span class="likes" data-shows-id="${show.name}"></span>
           </div>
         </div>
+        <div class="my-modal">
+        </div>
       </div>
     `).join('');
 
     movieContainer.innerHTML = shows;
+    movieContainer.addEventListener('click', (e) => showModal(e));
+
     const likeBtns = document.querySelectorAll('.like');
     const likes = document.querySelectorAll('.likes');
 
