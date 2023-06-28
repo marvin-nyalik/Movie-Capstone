@@ -1,4 +1,4 @@
-import { getShowDetails } from './api.js';
+import { getShowDetails, getSingleMovieComments, addMovieComment } from './api.js';
 
 const showModal = async (e) => {
   if (e.target.classList.contains('comments')) {
@@ -43,20 +43,29 @@ const showModal = async (e) => {
                   </div>
                   <div class="comments">
                       <h4>COMMENTS <span id="comment-count">24</span> </h4>
+                      <div class="user-comments">
                       <p>No comment</p>
+                      </div>
 
                   </div>
                   <div class="add-comment">
                       <h4>Add A Comment</h4>
                       <form action="#">
                           <input type="text" name="name" id="name" placeholder="Your name">
-                          <textarea type="text" name="comment" id="add-comment" rows = "30">
-                          </textarea>
-                          <button type="button" id="add-comment-button">Comment</button>
+                          <textarea type="text" name="comment" id="add-comment" rows = "30"></textarea>
+                          <button type="button" data-id=${id} class="add-comment-button" id="add-comment-button">Comment</button>
                       </form>
                   </div>
                 </div>
         `;
+    modal.addEventListener('click', (e) => addMovieComment(e));
+    const modalImage = modal.querySelector('.img-cover img');
+
+    modalImage.addEventListener('load', async () => {
+      const commentsContainer = modal.querySelector('.user-comments');
+      const commentCount = modal.querySelector('#comment-count');
+      await getSingleMovieComments(id, commentsContainer, commentCount);
+    });
   }
 
   if (e.target.classList.contains('close')) {
