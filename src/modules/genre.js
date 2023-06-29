@@ -17,7 +17,7 @@ const filterShows = () => {
       const shows = await getShows();
       const filteredShows = shows.filter((show) => show.genres.includes(genre));
       filteredShows.splice(50);
-      const movies = filteredShows.map((show) => `<div class="movie-card">
+      const movies = filteredShows.map((show, index) => `<div class="movie-card" data-id="${filteredShows[index].externals.thetvdb}">
       <img src="${show.image.medium}" alt="${show.name}">
       <h3 class="movie-title">${show.name}</h3>
       <div class="interactions">
@@ -26,6 +26,8 @@ const filterShows = () => {
           <i class="like fa-regular fa-heart" data-show-id="${show.name}"></i>
           <span class="likes" data-shows-id="${show.name}"></span>
         </div>
+      </div>
+      <div class="my-modal">
       </div>
     </div>`).join('');
       movieList.innerHTML = movies;
