@@ -37,7 +37,11 @@ const displayShows = () => {
       handleLikeButtonClick(btn, index, likes);
     });
 
-    window.addEventListener('load', () => {
+    window.onload = () => {
+      displayLikes('.likes');
+    };
+
+    window.addEventListener('beforeunload', () => {
       displayLikes('.likes');
     });
   }).catch((err) => {
