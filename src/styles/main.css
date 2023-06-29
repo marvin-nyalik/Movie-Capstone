@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,500;1,400&display=swap');
+@import 'toggle.css';
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+main {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  text-transform: capitalize;
+  font-size: 2rem;
+}
+
+header {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.desktop-menu {
+  display: none;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #272a31;
+  opacity: 0.9;
+  backdrop-filter: blur(7px);
+  transition: all 1s ease;
+  display: none;
+}
+
+.active.mobile-menu {
+  display: block;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-transform: capitalize;
+}
+
+.mobile-menu ul li {
+  margin: 1rem 0;
+  color: #fff;
+}
+
+.mobile-menu ul li:hover {
+  color: #fff;
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  gap: 30px;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.movie-card {
+  background: #fff;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  padding: 1rem 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* .movie-card:hover {
+  transform: scale(1.05);
+} */
+
+.movie-card img {
+  width: 80%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.movie-card h3 {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  text-transform: capitalize;
+}
+
+.movie-card .interactions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 0.5rem;
+}
+
+.movie-card .interactions button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.movie-card .interactions button:hover {
+  transform: scale(1.05);
+}
+
+.movie-card .interactions button:focus {
+  outline: none;
+}
+
+.movie-card .interactions .like {
+  color: #f44336;
+  background: #ffebee;
+  padding: 0.7rem;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+.movie-card .interactions .like:hover {
+  background: #ffcdd2;
+}
+
+footer {
+  height: 17vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgb(223, 216, 216);
+}
+
+footer p {
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* modal */
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  width: 70%;
+  height: 90%;
+  margin: auto;
+  background: rgb(79, 76, 76);
+  z-index: 10;
+  transition: opacity 0.3s, visibility 0.3s;
+  pointer-events: auto;
+}
+
+.close {
+  z-index: 99;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.movie-card:not(.modal-open) {
+  pointer-events: auto;
+}
+
+.my-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 90%;
+  height: 95%;
+  overflow-y: scroll;
+  padding: 20px 0;
+  margin: 0 auto;
+  border: 1px solid lightgray;
+  border-radius: 3rem;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.my-modal .modal-cover {
+  width: 95%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.my-modal .headline {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.my-modal .headline p {
+  font-size: 24px;
+}
+
+.my-modal .body {
+  width: 90%;
+  height: auto;
+  margin: 20px auto;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 0.9rem;
+}
+
+.my-modal .img-cover {
+  width: 90%;
+  height: 55%;
+  margin: auto;
+  object-fit: cover;
+}
+
+.my-modal .img-cover img {
+  width: 98%;
+}
+
+.my-modal .comments {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.my-modal .add-comment {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.my-modal .add-comment form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  width: 95%;
+  margin: 20px 0;
+  height: 2rem;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+form input::placeholder {
+  font-style: italic;
+  color: grey;
+}
+
+form textarea {
+  height: 4rem;
+  width: 95%;
+  margin: 20px 0;
+  padding: 0;
+  border-radius: 20px;
+  border: 1px solid grey;
+}
+
+#add-comment-button {
+  height: 5vh;
+  width: 30%;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.modal-container {
+  background: #c5c9d0;
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+p span {
+  font-weight: 300;
+}
+
+.my-modal .footer {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.my-modal .footer .disp {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+  .my-modal {
+    width: 80%;
+    overflow-y: auto;
+    height: 98%;
+    padding: 1rem 0;
+  }
+
+  .my-modal .modal-cover {
+    height: 90%;
+  }
+
+  .my-modal .img-cover {
+    height: auto;
+    margin-right: 20px;
+  }
+
+  .my-modal .headline {
+    height: 3vh;
+    position: relative;
+    top: -2rem;
+    margin-bottom: 20px;
+  }
+
+  .my-modal .headline p {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .my-modal .img-cover img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .my-modal .body {
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .my-modal .desk-cont {
+    display: flex;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .my-modal .add-comment {
+    height: auto;
+  }
+
+  form input {
+    width: 30%;
+    border: 2px solid grey;
+  }
+
+  form textarea {
+    height: 25vh;
+    border-radius: 1rem;
+    padding: 20px;
+    border: 2px solid grey;
+  }
+
+  form button {
+    width: 3rem;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .mobile-menu {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .desktop-menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .counter {
+      color: #f44336;
+      background: #ffebee;
+      padding: 0.2rem;
+      font-size: 1rem;
+      border-radius: 8px;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      text-transform: capitalize;
+      margin-top: 1rem;
+    }
+
+    ul li {
+      text-decoration: none;
+      color: #000;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    ul li:hover,
+    ul li:focus {
+      background: #f5f5f5;
+    }
+  }
+}
