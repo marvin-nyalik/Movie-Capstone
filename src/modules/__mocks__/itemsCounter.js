@@ -22,7 +22,3 @@ const allItems = [
 ];
 
 export { countItems, allItems };
-
-// test('Test if the number of items is ok...', () => {
-//     expect(countItems([{ id: 1 }, { id: 2 }, { id: 3 }])).toBe(3);
-// });
