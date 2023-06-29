@@ -2,6 +2,7 @@ import { getShows } from './api.js';
 import showModal from './handlePopup.js';
 import handleLikeButtonClick from './likes.js';
 import displayLikes from './getlikes.js';
+import countItems from './itemsCounter.js';
 
 const movieContainer = document.querySelector('.movie-list');
 
@@ -9,6 +10,7 @@ const movieContainer = document.querySelector('.movie-list');
 const displayShows = () => {
   getShows().then((data) => {
     data.splice(50);
+    countItems(data);
     const shows = data.map((show, index) => `
       <div class="movie-card" data-id="${data[index].externals.thetvdb}">
         <img src="${show.image.medium}" alt="${show.name}">
