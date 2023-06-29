@@ -42,7 +42,7 @@ const showModal = async (e) => {
                     </div>
                   </div>
                   <div class="comments">
-                      <h4>COMMENTS <span id="comment-count">24</span> </h4>
+                      <h4>COMMENTS <span id="comment-count">0</span> </h4>
                       <div class="user-comments">
                       <p>No comment</p>
                       </div>
