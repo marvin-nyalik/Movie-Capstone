@@ -1,3 +1,5 @@
+import countComments from './commentCounter.js';
+
 const involvementAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
 const apiKey = 'r2HqEF2mwpkxdwytyGER';
 const baseAddCommentUrl = `${involvementAPI + apiKey}/comments/`;
@@ -71,7 +73,7 @@ const getSingleMovieComments = async (movieId, commentsCont, count) => {
     const allComments = await fetch(commentsUrl).then();
     if (allComments.ok) {
       const allCommentsData = await allComments.json();
-      counter.innerHTML = `(${allCommentsData.length})`;
+      counter.innerHTML = `(${countComments(allCommentsData)})`;
       const commentContainer = commentsCont;
       commentContainer.innerHTML = '';
       if (allCommentsData.length > 0) {
