@@ -11,6 +11,7 @@ const displayShows = () => {
   getShows().then((data) => {
     data.splice(50);
     countItems(data);
+    console.log(data);
     const shows = data.map((show, index) => `
       <div class="movie-card" data-id="${data[index].externals.thetvdb}">
         <img src="${show.image.medium}" alt="${show.name}">
