@@ -29,7 +29,7 @@
 
 # 📖 MOVIE CAPSTONE <a name="Portfolio-site"></a>
 
-**The Movie Capstone** This is a Single-page Web Application built with html,css and javascript. It uses the TVMAZE-API to showcase information about movies and Television shows.
+**The Movie Capstone** This is a Single-page Web Application built with HTML, CSS, and JavaScript. It uses the TVMAZE-API to showcase information about movies and Television shows. Here's a <a href="https://drive.google.com/file/d/1OOuZltuHvVBOQ2UDcKQ_4Rb5bldh32vS/view?usp=sharing">brief video overview </a>. 
 
 ## Built With <a name="built-with"></a>
 <details>
