@@ -13,54 +13,62 @@ const getShowDetails = async (id) => {
   const response = await fetch(detailUrl).then((response) => response.json());
   return response;
 };
-
+let isSubmitting = false;
 const addMovieComment = async (e) => {
+  if (isSubmitting) { return; }
   if (e.target.classList.contains('add-comment-button')) {
-    const form = e.target.closest('form');
-    const movieId = e.target.getAttribute('data-id');
-    const name = form.querySelector('input').value;
-    const comment = form.querySelector('textarea').value;
-    const commentContainer = form.closest('.modal-cover')
-      .querySelector('.comments')
-      .querySelector('.user-comments');
-    const commentCount = form.closest('.modal-cover')
-      .querySelector('.comments').querySelector('#comment-count');
+    isSubmitting = true;
+    try {
+      const form = e.target.closest('form');
+      const movieId = e.target.getAttribute('data-id');
+      const name = form.querySelector('input').value;
+      const comment = form.querySelector('textarea').value;
+      const commentContainer = form.closest('.modal-cover')
+        .querySelector('.comments')
+        .querySelector('.user-comments');
+      const commentCount = form.closest('.modal-cover')
+        .querySelector('.comments').querySelector('#comment-count');
 
-    const config = {
-      method: 'POST',
-      body: JSON.stringify(
-        {
-          item_id: movieId,
-          username: name,
-          comment,
+      const config = {
+        method: 'POST',
+        body: JSON.stringify(
+          {
+            item_id: movieId,
+            username: name,
+            comment,
+          },
+        ),
+        headers: {
+          'Content-Type': 'application/json',
         },
-      ),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
+      };
 
-    if (name !== '' && comment !== '' && movieId !== '') {
-      await fetch(baseAddCommentUrl, config);
-      const commentsUrl = getCommentsBaseUrl + movieId;
-      const allComments = await fetch(commentsUrl);
-      const allCommentsData = await allComments.json();
+      if (name !== '' && comment !== '' && movieId !== '') {
+        await fetch(baseAddCommentUrl, config);
+        const commentsUrl = getCommentsBaseUrl + movieId;
+        const allComments = await fetch(commentsUrl);
+        const allCommentsData = await allComments.json();
 
-      commentContainer.innerHTML = '';
-      commentCount.innerHTML = `(${allCommentsData.length})`;
-      allCommentsData.forEach((comment) => {
-        const commentItem = `
-        <div class="comment-item">
-        <p>${`${comment.creation_date} : ${comment.username}`}</p>
-        <p>${comment.comment}</p>
-        </div>
-        <br>
-        `;
-        commentContainer.innerHTML += commentItem;
-      });
+        commentContainer.innerHTML = '';
+        commentCount.innerHTML = `(${allCommentsData.length})`;
+        allCommentsData.forEach((comment) => {
+          const commentItem = `
+          <div class="comment-item">
+          <p>${`${comment.creation_date} : ${comment.username}`}</p>
+          <p>${comment.comment}</p>
+          </div>
+          <br>
+          `;
+          commentContainer.innerHTML += commentItem;
+        });
 
-      form.querySelector('input').value = '';
-      form.querySelector('textarea').value = '';
+        form.querySelector('input').value = '';
+        form.querySelector('textarea').value = '';
+      }
+    } catch (error) {
+      error.stack = '';
+    } finally {
+      isSubmitting = false;
     }
   }
 };
