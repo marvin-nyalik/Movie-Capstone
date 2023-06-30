@@ -14,6 +14,7 @@
   - [🛠 Built With](#built-with)
   - [Tech Stack](#tech-stack)
   - [Key Features](#key-features)
+  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -57,6 +58,9 @@ This project is built with:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+## 🚀 Live Demo <a name="live-demo"></a>
+See the IMovies project <a href="https://marvin-nyalik.github.io/Movie-Capstone/dist/"> here</a>
 
 <!-- GETTING STARTED -->
 
